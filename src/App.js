@@ -9,13 +9,16 @@ import {
 //Layouts
 import RootLayout from "./layouts/RootLayout";
 import HelpLayout from "./layouts/HelpLayout";
+import CareersLayout from "./layouts/Careerslayout";
 
 //Pages
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Faq from "./pages/help/Faq";
-import Contact from "./pages/help/Contact";
+import Faq from "./pages/Help/Faq";
+import Contact from "./pages/Help/Contact";
 import NotFound from "./pages/NotFound";
+import Careers, { careersLoader } from "./pages/Career/Careers";
+import CareerDetails, { careerDetailsLoader } from "./pages/Career/CareerDetails";
 
 
 const router = createBrowserRouter(
@@ -23,11 +26,28 @@ const router = createBrowserRouter(
     <Route path ="/" element ={<RootLayout />}>
       <Route index="/" element={<Home />} />
       <Route path="about" element={<About />} />
+
       <Route path="help" element ={<HelpLayout />}>
         <Route path="faq" element={<Faq />}/>
         <Route path="contact" element={<Contact />}/>
       </Route>
-      <Route path="*" element ={<NotFound />} />
+
+      <Route path="careers" element={<CareersLayout />}>
+        <Route 
+        index
+        element ={<Careers />} 
+        loader={careersLoader} 
+        />
+        <Route
+        path=":id"
+        element={<CareerDetails />}
+        loader = {careerDetailsLoader}
+        >
+        </Route>
+      </Route>
+
+      <Route path="*" element ={<NotFound />}
+      />
       </Route>
   )
 );
