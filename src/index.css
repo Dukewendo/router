@@ -28,6 +28,7 @@ button {
 
 /* navbar */
 header nav {
+  display: flex;
   gap: 16px;
   justify-content: end;
   max-width: 1200px;
@@ -49,7 +50,10 @@ header nav a.active {
   background: var(--primary);
 }
 /* page content */
-
+main {
+  max-width: 1200px;
+  margin: 40px auto;
+}
 
 /* help layout */
 
